@@ -1,23 +1,33 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
+import {Provider} from 'react-redux';
+import {createStore} from 'redux';
+import reducers from './src/reducers';
+import firebase from 'firebase';
 
 export default class App extends React.Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-        <Text>Changes you make will automatically reload.</Text>
-        <Text>Shake your phone to open the developer menu.</Text>
-      </View>
-    );
-  }
-}
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+    componentWillMount() {
+
+        const config = {
+            apiKey: "AIzaSyCS7pXgFd_LgmagIWHk1Q4xQ5nJXNb3WfE",
+            authDomain: "manager-b8858.firebaseapp.com",
+            databaseURL: "https://manager-b8858.firebaseio.com",
+            projectId: "manager-b8858",
+            storageBucket: "",
+            messagingSenderId: "406571691559"
+        };
+        firebase.initializeApp(config);
+
+    }
+
+    render() {
+        return (
+            <Provider store={createStore(reducers)}>
+                <View>
+                    <Text>Hi</Text>
+                </View>
+            </Provider>
+        );
+    }
+}
