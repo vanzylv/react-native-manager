@@ -1,11 +1,8 @@
 import React from 'react';
-import {View} from 'react-native';
 import {Provider} from 'react-redux';
 import {createStore, applyMiddleware} from 'redux';
 import reducers from './src/reducers';
 import firebase from 'firebase';
-import LoginForm from './src/components/LoginForm';
-import {Header} from "./src/components/common/Header";
 import ReduxThunk from 'redux-thunk';
 import Router from './src/Router'
 
